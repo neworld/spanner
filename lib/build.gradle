@@ -20,4 +20,6 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testCompile 'junit:junit:4.12'
+    testCompile "org.robolectric:robolectric:3.4"
+    testCompile "org.jetbrains.kotlin:kotlin-reflect:$KOTLIN_VERSION"
 }
