@@ -26,8 +26,8 @@ Spannable spannable = new Spanner()
         .append("subscript\n", subscript())
         .append("superscript\n", superscript())
         .append(" \n", image(getResources().getDrawable(R.drawable.ic_android_16dp)))
-        .append("quite\n", quite())
-        .append("The quick brown fox jumps over the lazy dog\n", bold(), foreground(0xFF904f1c), quite())
+        .append("quite\n", quote())
+        .append("The quick brown fox jumps over the lazy dog\n", bold(), foreground(0xFF904f1c), quote())
         ;
 ```
 

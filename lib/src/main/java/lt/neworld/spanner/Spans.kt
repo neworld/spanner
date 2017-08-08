@@ -48,6 +48,6 @@ fun image(context: Context, bitmap: Bitmap, verticalAlignment: Int = ImageSpan.A
 
 fun image(drawable: Drawable) = ImageSpan(drawable)
 
-fun quite() = QuoteSpan()
+fun quote() = QuoteSpan()
 
-fun quite(@ColorInt color: Int) = QuoteSpan(color)
+fun quote(@ColorInt color: Int) = QuoteSpan(color)
