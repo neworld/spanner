@@ -22,5 +22,13 @@ dependencies {
     testCompile 'junit:junit:4.12'
     testCompile "org.robolectric:robolectric:3.4"
     testCompile "org.jetbrains.kotlin:kotlin-reflect:$KOTLIN_VERSION"
-    compile 'org.jetbrains.kotlin:kotlin-runtime:1.1.3-2'
+    provided 'org.jetbrains.kotlin:kotlin-runtime:1.1.3-2'
+}
+
+project.afterEvaluate {
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+        kotlinOptions {
+            freeCompilerArgs = ['-Xno-call-assertions', '-Xno-param-assertions']
+        }
+    }
 }

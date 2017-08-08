@@ -9,7 +9,7 @@ import android.text.TextUtils
  * @author Andrius Semionovas
  * @since 2017-08-01
  */
-class Spanner(text: CharSequence) : SpannableStringBuilder(text) {
+class Spanner(text: CharSequence?) : SpannableStringBuilder(text) {
     constructor() : this("")
 
     override fun append(text: CharSequence?): Spanner {
