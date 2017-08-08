@@ -1,3 +1,5 @@
+[![](https://jitpack.io/v/neworld/spanner.svg)](https://jitpack.io/#neworld/spanner)
+
 This lib provides simple and fluent API for creating [Android Spannable](https://developer.android.com/reference/android/text/Spannable.html).
 Features:
 - Simple and fluent API
@@ -36,6 +38,19 @@ Spannable spannable = new Spanner("The quick brown fox jumps over the lazy dog")
         .replace("dog", "cat", strikeThrough() /* any number of spans */)
         .insert(5, "foo", bold(), italic() /* any number of spans */)
         .append("bar", underline() /* any number of spans */);
+```
+#### How to use
+```
+    allprojects {
+        repositories {
+            ...
+            maven { url 'https://jitpack.io' }
+        }
+    }
+	
+    dependencies {
+        compile 'com.github.neworld:spanner:0.1'
+    }
 ```
 
 #### License
