@@ -49,7 +49,7 @@ Spannable spannable = new Spanner("The quick brown fox jumps over the lazy dog")
     }
 	
     dependencies {
-        compile 'com.github.neworld:spanner:v0.1'
+        compile 'lt.neworld:spanner:v0.1'
     }
 ```
 
