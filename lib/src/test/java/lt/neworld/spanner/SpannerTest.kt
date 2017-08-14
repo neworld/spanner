@@ -1,8 +1,10 @@
 package lt.neworld.spanner
 
 import android.graphics.Typeface
+import android.text.Spannable
 import android.text.TextUtils
 import android.text.style.StyleSpan
+import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -41,7 +43,7 @@ class SpannerTest {
         val span = StyleSpan(Typeface.NORMAL)
         builder.append("bar", span)
         assertEquals("test bar", builder.toString())
-        assertEquals(span, builder.getSpans(0, builder.length - 1, StyleSpan::class.java)[0])
+        assertArrayEquals(arrayOf(span), builder.getSpans())
 
         builder.append(" abc ", 1, 2)
         assertEquals("test bara", builder.toString())
@@ -54,7 +56,7 @@ class SpannerTest {
         val span = StyleSpan(Typeface.NORMAL)
         builder.insert(1, " foo ", span)
         assertEquals("a foo b", builder.toString())
-        assertEquals(span, builder.getSpans(0, builder.length - 1, StyleSpan::class.java)[0])
+        assertArrayEquals(arrayOf(span), builder.getSpans())
 
         builder.insert(1, " bar")
         assertEquals("a bar foo b", builder.toString())
@@ -70,14 +72,14 @@ class SpannerTest {
         var span = StyleSpan(Typeface.NORMAL)
         builder.replace(1, 3, "oo", span)
         assertEquals("foo {replace}", builder.toString())
-        assertEquals(span, builder.getSpans(0, builder.length - 1, StyleSpan::class.java)[0])
+        assertArrayEquals(arrayOf(span), builder.getSpans())
 
         span = StyleSpan(Typeface.NORMAL)
         builder.replace("{replace}", "bar", span)
         assertEquals("foo bar", builder.toString())
 
         val start = TextUtils.indexOf(builder, "bar")
-        assertEquals(span, builder.getSpans(start, builder.length, StyleSpan::class.java)[0])
+        assertArrayEquals(arrayOf(span), builder.getSpans(start, builder.length))
     }
 
     @Test
@@ -86,7 +88,7 @@ class SpannerTest {
 
         builder.replace("not exist", "good text", StyleSpan(Typeface.NORMAL))
         assertEquals("foo bar", builder.toString())
-        assertEquals(0, builder.getSpans(0, builder.length - 1, StyleSpan::class.java).size)
+        assertArrayEquals(emptyArray(), builder.getSpans())
     }
 
     @Test
@@ -107,4 +109,8 @@ class SpannerTest {
         builder.replace(1, 3, null, StyleSpan(Typeface.NORMAL))
         assertEquals("b", builder.toString())
     }
+
+    fun Spannable.getSpans() = getSpans(0, length - 1)
+
+    fun Spannable.getSpans(start: Int, end: Int) = getSpans(start, end, Any::class.java)!!
 }
