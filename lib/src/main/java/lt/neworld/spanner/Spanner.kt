@@ -78,9 +78,7 @@ class Spanner(text: CharSequence?) : SpannableStringBuilder(text) {
 
         append(text)
 
-        for (span in spans) {
-            setSpan(span, start, length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        }
+        setSpans(start, length, *spans)
 
         return this
     }
@@ -88,9 +86,7 @@ class Spanner(text: CharSequence?) : SpannableStringBuilder(text) {
     fun insert(where: Int, text: CharSequence, vararg spans: Any): Spanner {
         super.insert(where, text)
 
-        for (span in spans) {
-            setSpan(span, where, where + text.length, 0)
-        }
+        setSpans(where, where + text.length, *spans)
 
         return this
     }
@@ -100,9 +96,7 @@ class Spanner(text: CharSequence?) : SpannableStringBuilder(text) {
 
         super.replace(start, end, text)
 
-        for (span in spans) {
-            setSpan(span, start, start + text.length, 0)
-        }
+        setSpans(start, start + text.length, *spans)
 
         return this
     }
@@ -117,5 +111,12 @@ class Spanner(text: CharSequence?) : SpannableStringBuilder(text) {
         val end = start + search.length
 
         return replace(start, end, replace, *spans)
+    }
+
+    fun setSpans(start: Int, end: Int, vararg spans: Any): Spanner {
+        for (span in spans) {
+            setSpan(span, start, end, 0)
+        }
+        return this
     }
 }

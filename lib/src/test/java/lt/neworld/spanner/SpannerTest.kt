@@ -9,6 +9,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
+import java.lang.StringBuilder
 
 /**
  * @author Andrius Semionovas
@@ -44,6 +45,7 @@ class SpannerTest {
         builder.append("bar", span)
         assertEquals("test bar", builder.toString())
         assertArrayEquals(arrayOf(span), builder.getSpans())
+        assertSpans("test <StyleSpan>bar</StyleSpan>", builder)
 
         builder.append(" abc ", 1, 2)
         assertEquals("test bara", builder.toString())
@@ -56,7 +58,7 @@ class SpannerTest {
         val span = StyleSpan(Typeface.NORMAL)
         builder.insert(1, " foo ", span)
         assertEquals("a foo b", builder.toString())
-        assertArrayEquals(arrayOf(span), builder.getSpans())
+        assertSpans("a<StyleSpan> foo </StyleSpan>b", builder)
 
         builder.insert(1, " bar")
         assertEquals("a bar foo b", builder.toString())
@@ -72,14 +74,13 @@ class SpannerTest {
         var span = StyleSpan(Typeface.NORMAL)
         builder.replace(1, 3, "oo", span)
         assertEquals("foo {replace}", builder.toString())
-        assertArrayEquals(arrayOf(span), builder.getSpans())
+        assertSpans("f<StyleSpan>oo</StyleSpan> {replace}", builder)
 
         span = StyleSpan(Typeface.NORMAL)
         builder.replace("{replace}", "bar", span)
         assertEquals("foo bar", builder.toString())
 
-        val start = TextUtils.indexOf(builder, "bar")
-        assertArrayEquals(arrayOf(span), builder.getSpans(start, builder.length))
+        assertSpans("f<StyleSpan>oo</StyleSpan> <StyleSpan>bar</StyleSpan>", builder)
     }
 
     @Test
@@ -88,7 +89,7 @@ class SpannerTest {
 
         builder.replace("not exist", "good text", StyleSpan(Typeface.NORMAL))
         assertEquals("foo bar", builder.toString())
-        assertArrayEquals(emptyArray(), builder.getSpans())
+        assertSpans("foo bar", builder)
     }
 
     @Test
@@ -108,6 +109,34 @@ class SpannerTest {
 
         builder.replace(1, 3, null, StyleSpan(Typeface.NORMAL))
         assertEquals("b", builder.toString())
+    }
+
+    fun assertSpans(expected: String, actual: Spanner) {
+        assertEquals(expected, actual.debugSpans())
+    }
+
+    fun Spannable.debugSpans(): String {
+        val all = getSpans()
+
+        val debugText = StringBuilder(toString())
+
+        var delta = 0
+
+        fun insert(index: Int, text: CharSequence) {
+            debugText.insert(index + delta, text)
+            delta += text.length
+        }
+
+        all.forEach {
+            val start = getSpanStart(it)
+            val end = getSpanEnd(it)
+            val name = it.javaClass.simpleName
+
+            insert(start, "<$name>")
+            insert(end, "</$name>")
+        }
+
+        return debugText.toString()
     }
 
     fun Spannable.getSpans() = getSpans(0, length - 1)
