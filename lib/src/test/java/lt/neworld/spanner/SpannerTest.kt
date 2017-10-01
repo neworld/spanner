@@ -1,6 +1,7 @@
 package lt.neworld.spanner
 
 import android.text.Spannable
+import lt.neworld.spanner.Spans.bold
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
