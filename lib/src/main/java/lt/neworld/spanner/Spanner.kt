@@ -71,7 +71,7 @@ class Spanner(text: CharSequence?) : SpannableStringBuilder(text) {
         return this
     }
 
-    fun append(text: CharSequence?, vararg spans: Any): Spanner {
+    fun append(text: CharSequence?, vararg spans: Span): Spanner {
         text ?: return this
 
         val start = length
@@ -83,7 +83,7 @@ class Spanner(text: CharSequence?) : SpannableStringBuilder(text) {
         return this
     }
 
-    fun insert(where: Int, text: CharSequence, vararg spans: Any): Spanner {
+    fun insert(where: Int, text: CharSequence, vararg spans: Span): Spanner {
         super.insert(where, text)
 
         setSpans(where, where + text.length, *spans)
@@ -91,7 +91,7 @@ class Spanner(text: CharSequence?) : SpannableStringBuilder(text) {
         return this
     }
 
-    fun replace(start: Int, end: Int, text: CharSequence?, vararg spans: Any): Spanner {
+    fun replace(start: Int, end: Int, text: CharSequence?, vararg spans: Span): Spanner {
         val text = text ?: ""
 
         super.replace(start, end, text)
@@ -101,7 +101,7 @@ class Spanner(text: CharSequence?) : SpannableStringBuilder(text) {
         return this
     }
 
-    fun replace(search: CharSequence, replace: CharSequence, vararg spans: Any): Spanner {
+    fun replace(search: CharSequence, replace: CharSequence, vararg spans: Span): Spanner {
         val start = TextUtils.indexOf(this, search)
 
         if (start < 0) {
@@ -113,9 +113,9 @@ class Spanner(text: CharSequence?) : SpannableStringBuilder(text) {
         return replace(start, end, replace, *spans)
     }
 
-    fun setSpans(start: Int, end: Int, vararg spans: Any): Spanner {
+    fun setSpans(start: Int, end: Int, vararg spans: Span): Spanner {
         for (span in spans) {
-            setSpan(span, start, end, 0)
+            setSpan(span.buildSpan(), start, end, 0)
         }
         return this
     }

@@ -41,10 +41,8 @@ class SpannerTest {
     fun append_withSpan() {
         val builder = Spanner("test ")
 
-        val span = StyleSpan(Typeface.NORMAL)
-        builder.append("bar", span)
+        builder.append("bar", bold())
         assertEquals("test bar", builder.toString())
-        assertArrayEquals(arrayOf(span), builder.getSpans())
         assertSpans("test <StyleSpan>bar</StyleSpan>", builder)
 
         builder.append(" abc ", 1, 2)
@@ -55,8 +53,7 @@ class SpannerTest {
     fun insert() {
         val builder = Spanner("ab")
 
-        val span = StyleSpan(Typeface.NORMAL)
-        builder.insert(1, " foo ", span)
+        builder.insert(1, " foo ", bold())
         assertEquals("a foo b", builder.toString())
         assertSpans("a<StyleSpan> foo </StyleSpan>b", builder)
 
@@ -71,13 +68,11 @@ class SpannerTest {
     fun replace() {
         val builder = Spanner("faa {replace}")
 
-        var span = StyleSpan(Typeface.NORMAL)
-        builder.replace(1, 3, "oo", span)
+        builder.replace(1, 3, "oo", bold())
         assertEquals("foo {replace}", builder.toString())
         assertSpans("f<StyleSpan>oo</StyleSpan> {replace}", builder)
 
-        span = StyleSpan(Typeface.NORMAL)
-        builder.replace("{replace}", "bar", span)
+        builder.replace("{replace}", "bar", bold())
         assertEquals("foo bar", builder.toString())
 
         assertSpans("f<StyleSpan>oo</StyleSpan> <StyleSpan>bar</StyleSpan>", builder)
@@ -87,7 +82,7 @@ class SpannerTest {
     fun nonExistingReplace() {
         val builder = Spanner("foo bar")
 
-        builder.replace("not exist", "good text", StyleSpan(Typeface.NORMAL))
+        builder.replace("not exist", "good text", bold())
         assertEquals("foo bar", builder.toString())
         assertSpans("foo bar", builder)
     }
@@ -99,7 +94,7 @@ class SpannerTest {
         builder.append(null)
         assertEquals("foo", builder.toString())
 
-        builder.append(null, StyleSpan(Typeface.NORMAL))
+        builder.append(null, bold())
         assertEquals("foo", builder.toString())
     }
 
@@ -107,7 +102,7 @@ class SpannerTest {
     fun replaceWithNull() {
         val builder = Spanner("bar")
 
-        builder.replace(1, 3, null, StyleSpan(Typeface.NORMAL))
+        builder.replace(1, 3, null, bold())
         assertEquals("b", builder.toString())
     }
 
