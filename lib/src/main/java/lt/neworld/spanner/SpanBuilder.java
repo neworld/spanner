@@ -5,6 +5,6 @@ package lt.neworld.spanner;
  * @since 2017-10-01
  */
 
-public interface SpanBuilder<R> {
-    R build();
+public interface SpanBuilder {
+    Object build();
 }

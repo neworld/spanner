@@ -31,7 +31,7 @@ public class Spans {
     }
 
     public static Span sizePX(@Dimension(unit = Dimension.PX) final int px) {
-        return new Span(new SpanBuilder<Object>() {
+        return new Span(new SpanBuilder() {
             @Override
             public Object build() {
                 return new AbsoluteSizeSpan(px, false);
@@ -40,7 +40,7 @@ public class Spans {
     }
 
     public static Span sizeDP(@Dimension(unit = Dimension.DP) final int dp) {
-        return new Span(new SpanBuilder<Object>() {
+        return new Span(new SpanBuilder() {
             @Override
             public Object build() {
                 return new AbsoluteSizeSpan(dp, true);
@@ -49,7 +49,7 @@ public class Spans {
     }
 
     public static Span scaleSize(@FloatRange(from = 0.0) final float proportion) {
-        return new Span(new SpanBuilder<Object>() {
+        return new Span(new SpanBuilder() {
             @Override
             public Object build() {
                 return new RelativeSizeSpan(proportion);
@@ -58,7 +58,7 @@ public class Spans {
     }
 
     public static Span bold() {
-        return new Span(new SpanBuilder<Object>() {
+        return new Span(new SpanBuilder() {
             @Override
             public Object build() {
                 return new StyleSpan(Typeface.BOLD);
@@ -67,7 +67,7 @@ public class Spans {
     }
 
     public static Span italic() {
-        return new Span(new SpanBuilder<Object>() {
+        return new Span(new SpanBuilder() {
             @Override
             public Object build() {
                 return new StyleSpan(Typeface.ITALIC);
@@ -76,7 +76,7 @@ public class Spans {
     }
 
     public static Span boldItalic() {
-        return new Span(new SpanBuilder<Object>() {
+        return new Span(new SpanBuilder() {
             @Override
             public Object build() {
                 return new StyleSpan(Typeface.BOLD_ITALIC);
@@ -85,7 +85,7 @@ public class Spans {
     }
 
     public static Span font(final String font) {
-        return new Span(new SpanBuilder<Object>() {
+        return new Span(new SpanBuilder() {
             @Override
             public Object build() {
                 return new TypefaceSpan(font);
@@ -94,7 +94,7 @@ public class Spans {
     }
 
     public static Span strikeThrough() {
-        return new Span(new SpanBuilder<Object>() {
+        return new Span(new SpanBuilder() {
             @Override
             public Object build() {
                 return new StrikethroughSpan();
@@ -103,7 +103,7 @@ public class Spans {
     }
 
     public static Span underline() {
-        return new Span(new SpanBuilder<Object>() {
+        return new Span(new SpanBuilder() {
             @Override
             public Object build() {
                 return new UnderlineSpan();
@@ -112,7 +112,7 @@ public class Spans {
     }
 
     public static Span background(@ColorInt final int color) {
-        return new Span(new SpanBuilder<Object>() {
+        return new Span(new SpanBuilder() {
             @Override
             public Object build() {
                 return new BackgroundColorSpan(color);
@@ -121,7 +121,7 @@ public class Spans {
     }
 
     public static Span foreground(@ColorInt final int color) {
-        return new Span(new SpanBuilder<Object>() {
+        return new Span(new SpanBuilder() {
             @Override
             public Object build() {
                 return new ForegroundColorSpan(color);
@@ -130,7 +130,7 @@ public class Spans {
     }
 
     public static Span subscript() {
-        return new Span(new SpanBuilder<Object>() {
+        return new Span(new SpanBuilder() {
             @Override
             public Object build() {
                 return new SubscriptSpan();
@@ -139,7 +139,7 @@ public class Spans {
     }
 
     public static Span superscript() {
-        return new Span(new SpanBuilder<Object>() {
+        return new Span(new SpanBuilder() {
             @Override
             public Object build() {
                 return new SuperscriptSpan();
@@ -148,7 +148,7 @@ public class Spans {
     }
 
     public static Span image(final Drawable drawable) {
-        return new Span(new SpanBuilder<Object>() {
+        return new Span(new SpanBuilder() {
             @Override
             public Object build() {
                 return new ImageSpan(drawable);
@@ -157,7 +157,7 @@ public class Spans {
     }
 
     public static Span quote() {
-        return new Span(new SpanBuilder<Object>() {
+        return new Span(new SpanBuilder() {
             @Override
             public Object build() {
                 return new QuoteSpan();
@@ -166,7 +166,7 @@ public class Spans {
     }
 
     public static Span quote(@ColorInt final int color) {
-        return new Span(new SpanBuilder<Object>() {
+        return new Span(new SpanBuilder() {
             @Override
             public Object build() {
                 return new QuoteSpan(color);
@@ -179,7 +179,7 @@ public class Spans {
     }
 
     public static Span image(final Context context, final Bitmap bitmap, final int verticalAlignment) {
-        return new Span(new SpanBuilder<Object>() {
+        return new Span(new SpanBuilder() {
             @Override
             public Object build() {
                 return new ImageSpan(context, bitmap, verticalAlignment);
