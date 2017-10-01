@@ -52,6 +52,8 @@ public class SampleJavaActivity extends AppCompatActivity {
                 .append(" \n", image(getResources().getDrawable(R.drawable.ic_android_16dp)))
                 .append("quite\n", Spans.quote())
                 .append("The quick brown fox jumps over the lazy dog\n", bold(), foreground(0xFF904f1c), Spans.quote())
+                .span("fox", foreground(Color.RED))
+                .span("dog", foreground(Color.RED))
                 ;
         // @formatter:on
 

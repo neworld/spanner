@@ -1,10 +1,6 @@
 package lt.neworld.spanner
 
-import android.graphics.Typeface
 import android.text.Spannable
-import android.text.TextUtils
-import android.text.style.StyleSpan
-import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -104,6 +100,18 @@ class SpannerTest {
 
         builder.replace(1, 3, null, bold())
         assertEquals("b", builder.toString())
+    }
+
+    @Test
+    fun span_text() {
+        assertSpans("", Spanner().span("", bold()))
+        assertSpans("<StyleSpan>foo</StyleSpan>", Spanner().append("foo").span("", bold()))
+        assertSpans("foo <StyleSpan>bar</StyleSpan>", Spanner().append("foo bar").span("bar", bold()))
+        assertSpans("foo", Spanner().append("foo").span("bar", bold()))
+        assertSpans(
+                "<StyleSpan>bar</StyleSpan> foo <StyleSpan>bar</StyleSpan>",
+                Spanner().append("bar foo bar").span("bar", bold())
+        )
     }
 
     fun assertSpans(expected: String, actual: Spanner) {

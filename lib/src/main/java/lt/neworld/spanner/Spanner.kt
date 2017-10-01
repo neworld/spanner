@@ -2,7 +2,6 @@ package lt.neworld.spanner
 
 import android.support.annotation.RequiresApi
 import android.text.SpannableStringBuilder
-import android.text.Spanned
 import android.text.TextUtils
 
 /**
@@ -117,6 +116,24 @@ class Spanner(text: CharSequence?) : SpannableStringBuilder(text) {
         for (span in spans) {
             setSpan(span.buildSpan(), start, end, 0)
         }
+        return this
+    }
+
+    fun span(search: CharSequence, vararg spans: Span): Spanner {
+        if (TextUtils.isEmpty(search)) {
+            setSpans(0, length, *spans)
+            return this
+        }
+
+        var lastPos: Int = -1
+
+        while (true) {
+            lastPos = TextUtils.indexOf(this, search, lastPos + 1)
+            if (lastPos == -1) break
+
+            setSpans(lastPos, lastPos + search.length, *spans)
+        }
+
         return this
     }
 }
