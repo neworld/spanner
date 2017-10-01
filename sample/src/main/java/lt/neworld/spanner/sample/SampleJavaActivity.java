@@ -1,28 +1,21 @@
 package lt.neworld.spanner.sample;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Spannable;
+import android.text.method.LinkMovementMethod;
+import android.text.style.StyleSpan;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import lt.neworld.spanner.SpanBuilder;
 import lt.neworld.spanner.Spanner;
 import lt.neworld.spanner.Spans;
 
-import static lt.neworld.spanner.Spans.background;
-import static lt.neworld.spanner.Spans.bold;
-import static lt.neworld.spanner.Spans.boldItalic;
-import static lt.neworld.spanner.Spans.font;
-import static lt.neworld.spanner.Spans.foreground;
-import static lt.neworld.spanner.Spans.image;
-import static lt.neworld.spanner.Spans.italic;
-import static lt.neworld.spanner.Spans.quote;
-import static lt.neworld.spanner.Spans.scaleSize;
-import static lt.neworld.spanner.Spans.sizeDP;
-import static lt.neworld.spanner.Spans.strikeThrough;
-import static lt.neworld.spanner.Spans.subscript;
-import static lt.neworld.spanner.Spans.superscript;
-import static lt.neworld.spanner.Spans.underline;
+import static lt.neworld.spanner.Spans.*;
 
 public class SampleJavaActivity extends AppCompatActivity {
 
@@ -32,6 +25,15 @@ public class SampleJavaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sample);
 
         TextView textView = findViewById(R.id.text);
+
+        textView.setMovementMethod(new LinkMovementMethod());
+
+        View.OnClickListener onClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(view.getContext(), "Clicked", Toast.LENGTH_LONG).show();
+            }
+        };
 
         // @formatter:off
         Spannable spannable = new Spanner()
@@ -50,13 +52,24 @@ public class SampleJavaActivity extends AppCompatActivity {
                 .append("subscript\n", subscript())
                 .append("superscript\n", superscript())
                 .append(" \n", image(getResources().getDrawable(R.drawable.ic_android_16dp)))
-                .append("quite\n", Spans.quote())
+                .append("quite\n", quote())
                 .append("The quick brown fox jumps over the lazy dog\n", bold(), foreground(0xFF904f1c), Spans.quote())
                 .span("fox", foreground(Color.RED))
                 .span("dog", foreground(Color.RED))
+                .append("Custom\n", custom(new CustomSpan()))
+                .append("Click here\n", click(onClickListener))
+                .append("http://www.android.com\n", url("http://www.android.com"))
                 ;
         // @formatter:on
 
         textView.setText(spannable);
     }
 }
+
+class CustomSpan implements SpanBuilder {
+    @Override
+    public Object build() {
+        return new StyleSpan(Typeface.BOLD);
+    }
+}
+

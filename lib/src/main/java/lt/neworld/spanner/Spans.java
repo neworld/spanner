@@ -9,6 +9,7 @@ import android.support.annotation.Dimension;
 import android.support.annotation.FloatRange;
 import android.text.style.AbsoluteSizeSpan;
 import android.text.style.BackgroundColorSpan;
+import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.ImageSpan;
 import android.text.style.QuoteSpan;
@@ -18,7 +19,9 @@ import android.text.style.StyleSpan;
 import android.text.style.SubscriptSpan;
 import android.text.style.SuperscriptSpan;
 import android.text.style.TypefaceSpan;
+import android.text.style.URLSpan;
 import android.text.style.UnderlineSpan;
+import android.view.View;
 
 /**
  * @author Andrius Semionovas
@@ -183,6 +186,33 @@ public class Spans {
             @Override
             public Object build() {
                 return new ImageSpan(context, bitmap, verticalAlignment);
+            }
+        });
+    }
+
+    public static Span custom(SpanBuilder builder) {
+        return new Span(builder);
+    }
+
+    public static Span click(final View.OnClickListener onClickListener) {
+        return new Span(new SpanBuilder() {
+            @Override
+            public Object build() {
+                return new ClickableSpan() {
+                    @Override
+                    public void onClick(View view) {
+                        onClickListener.onClick(view);
+                    }
+                };
+            }
+        });
+    }
+
+    public static Span url(final String url) {
+        return new Span(new SpanBuilder() {
+            @Override
+            public Object build() {
+                return new URLSpan(url);
             }
         });
     }
