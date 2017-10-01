@@ -114,6 +114,17 @@ class SpannerTest {
         )
     }
 
+    @Test
+    fun replace_multiple() {
+        val spanner = Spanner("foo bar foo")
+                .replace("foo", "bar", bold())
+
+        assertSpans(
+                "<StyleSpan>bar</StyleSpan> bar <StyleSpan>bar</StyleSpan>",
+                spanner
+        )
+    }
+
     fun assertSpans(expected: String, actual: Spanner) {
         assertEquals(expected, actual.debugSpans())
     }

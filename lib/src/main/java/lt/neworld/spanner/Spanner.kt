@@ -101,15 +101,15 @@ class Spanner(text: CharSequence?) : SpannableStringBuilder(text) {
     }
 
     fun replace(search: CharSequence, replace: CharSequence, vararg spans: Span): Spanner {
-        val start = TextUtils.indexOf(this, search)
+        var start: Int
 
-        if (start < 0) {
-            return this
+        while (true) {
+            start = TextUtils.indexOf(this, search)
+            if (start == -1) break
+            replace(start, start + search.length, replace, *spans)
         }
 
-        val end = start + search.length
-
-        return replace(start, end, replace, *spans)
+        return this
     }
 
     fun setSpans(start: Int, end: Int, vararg spans: Span): Spanner {
