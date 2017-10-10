@@ -10,6 +10,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.LocaleList;
+import android.os.Parcel;
 import android.support.annotation.ColorInt;
 import android.support.annotation.Dimension;
 import android.support.annotation.FloatRange;
@@ -55,6 +56,9 @@ public class Spans {
         //hide
     }
 
+    /**
+     * @see android.text.style.AbsoluteSizeSpan#AbsoluteSizeSpan(int)
+     */
     public static Span sizePX(@Dimension(unit = Dimension.PX) final int px) {
         return new Span(new SpanBuilder() {
             @Override
@@ -64,6 +68,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.AbsoluteSizeSpan#AbsoluteSizeSpan(int, boolean)
+     */
     public static Span sizeDP(@Dimension(unit = Dimension.DP) final int dp) {
         return new Span(new SpanBuilder() {
             @Override
@@ -73,6 +80,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.RelativeSizeSpan#RelativeSizeSpan(float)
+     */
     public static Span scaleSize(@FloatRange(from = 0.0) final float proportion) {
         return new Span(new SpanBuilder() {
             @Override
@@ -82,6 +92,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.ScaleXSpan#ScaleXSpan(float)
+     */
     public static Span scaleXSize(@FloatRange(from = 0.0) final float proportion) {
         return new Span(new SpanBuilder() {
             @Override
@@ -91,6 +104,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.StyleSpan
+     */
     public static Span bold() {
         return new Span(new SpanBuilder() {
             @Override
@@ -100,6 +116,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.StyleSpan
+     */
     public static Span italic() {
         return new Span(new SpanBuilder() {
             @Override
@@ -109,6 +128,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.StyleSpan
+     */
     public static Span boldItalic() {
         return new Span(new SpanBuilder() {
             @Override
@@ -118,6 +140,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see TypefaceSpan#TypefaceSpan(String)
+     */
     public static Span font(final String font) {
         return new Span(new SpanBuilder() {
             @Override
@@ -127,6 +152,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see StrikethroughSpan#StrikethroughSpan()
+     */
     public static Span strikeThrough() {
         return new Span(new SpanBuilder() {
             @Override
@@ -136,6 +164,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see UnderlineSpan#UnderlineSpan()
+     */
     public static Span underline() {
         return new Span(new SpanBuilder() {
             @Override
@@ -145,6 +176,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.BackgroundColorSpan#BackgroundColorSpan(int)
+     */
     public static Span background(@ColorInt final int color) {
         return new Span(new SpanBuilder() {
             @Override
@@ -154,6 +188,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.ForegroundColorSpan#ForegroundColorSpan(int)
+     */
     public static Span foreground(@ColorInt final int color) {
         return new Span(new SpanBuilder() {
             @Override
@@ -163,6 +200,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see SubscriptSpan#SubscriptSpan()
+     */
     public static Span subscript() {
         return new Span(new SpanBuilder() {
             @Override
@@ -172,6 +212,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see SuperscriptSpan#SuperscriptSpan()
+     */
     public static Span superscript() {
         return new Span(new SpanBuilder() {
             @Override
@@ -181,6 +224,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.ImageSpan#ImageSpan(Drawable)
+     */
     public static Span image(final Drawable drawable) {
         return new Span(new SpanBuilder() {
             @Override
@@ -190,6 +236,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.ImageSpan#ImageSpan(Drawable, int)
+     */
     public static Span image(final Drawable drawable, final int verticalAlignment) {
         return new Span(new SpanBuilder() {
             @Override
@@ -199,6 +248,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see QuoteSpan#QuoteSpan()
+     */
     public static Span quote() {
         return new Span(new SpanBuilder() {
             @Override
@@ -208,6 +260,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.QuoteSpan#QuoteSpan(int)
+     */
     public static Span quote(@ColorInt final int color) {
         return new Span(new SpanBuilder() {
             @Override
@@ -217,10 +272,16 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.ImageSpan#ImageSpan(Context, Bitmap)
+     */
     public static Span image(Context context, Bitmap bitmap) {
         return image(context, bitmap, ImageSpan.ALIGN_BOTTOM);
     }
 
+    /**
+     * @see android.text.style.ImageSpan#ImageSpan(Context, Bitmap, int)
+     */
     public static Span image(final Context context, final Bitmap bitmap, final int verticalAlignment) {
         return new Span(new SpanBuilder() {
             @Override
@@ -234,6 +295,9 @@ public class Spans {
         return new Span(builder);
     }
 
+    /**
+     * @see ClickableSpan
+     */
     public static Span click(final View.OnClickListener onClickListener) {
         return new Span(new SpanBuilder() {
             @Override
@@ -248,6 +312,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.URLSpan#URLSpan(String)
+     */
     public static Span url(final String url) {
         return new Span(new SpanBuilder() {
             @Override
@@ -257,6 +324,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.AlignmentSpan.Standard#Standard(Layout.Alignment)
+     */
     public static Span center() {
         return new Span(new SpanBuilder() {
             @Override
@@ -266,6 +336,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.AlignmentSpan.Standard#Standard(Layout.Alignment)
+     */
     public static Span alignmentOpposite() {
         return new Span(new SpanBuilder() {
             @Override
@@ -275,6 +348,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.AlignmentSpan.Standard#Standard(Layout.Alignment)
+     */
     public static Span alignmentNormal() {
         return new Span(new SpanBuilder() {
             @Override
@@ -284,6 +360,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.BulletSpan#BulletSpan(int, int)
+     */
     public static Span bullet(final int gapWidth, final int color) {
         return new Span(new SpanBuilder() {
             @Override
@@ -293,6 +372,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.BulletSpan#BulletSpan(int)
+     */
     public static Span bullet(final int gapWidth) {
         return new Span(new SpanBuilder() {
             @Override
@@ -302,6 +384,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see BulletSpan#BulletSpan()
+     */
     public static Span bullet() {
         return new Span(new SpanBuilder() {
             @Override
@@ -311,6 +396,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.DrawableMarginSpan#DrawableMarginSpan(Drawable)
+     */
     public static Span imageMargin(final Drawable drawable) {
         return new Span(new SpanBuilder() {
             @Override
@@ -320,6 +408,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.DrawableMarginSpan#DrawableMarginSpan(Drawable, int)
+     */
     public static Span imageMargin(final Drawable drawable, final int pad) {
         return new Span(new SpanBuilder() {
             @Override
@@ -329,6 +420,23 @@ public class Spans {
         });
     }
 
+    /**
+     * @see EasyEditSpan
+     * @see EasyEditSpan#EasyEditSpan()
+     */
+    public static Span edit() {
+        return new Span(new SpanBuilder() {
+            @Override
+            public Object build() {
+                return new EasyEditSpan();
+            }
+        });
+    }
+
+    /**
+     * @see EasyEditSpan
+     * @see android.text.style.EasyEditSpan#EasyEditSpan(PendingIntent)
+     */
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
     public static Span edit(final PendingIntent pendingIntent) {
         return new Span(new SpanBuilder() {
@@ -339,6 +447,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.IconMarginSpan#IconMarginSpan(Bitmap)
+     */
     public static Span imageMargin(final Bitmap image) {
         return new Span(new SpanBuilder() {
             @Override
@@ -348,6 +459,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.IconMarginSpan#IconMarginSpan(Bitmap, int)
+     */
     public static Span imageMargin(final Bitmap image, final int pad) {
         return new Span(new SpanBuilder() {
             @Override
@@ -357,6 +471,10 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.LeadingMarginSpan
+     * @see android.text.style.LeadingMarginSpan.Standard#Standard(int, int)
+     */
     public static Span leadingMargin(final int first, final int rest) {
         return new Span(new SpanBuilder() {
             @Override
@@ -366,6 +484,10 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.LeadingMarginSpan
+     * @see android.text.style.LeadingMarginSpan.Standard#Standard(int)
+     */
     public static Span leadingMargin(final int first) {
         return new Span(new SpanBuilder() {
             @Override
@@ -375,6 +497,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see BlurMaskFilter#BlurMaskFilter(float, BlurMaskFilter.Blur)
+     */
     public static Span blur(final float radius, final BlurMaskFilter.Blur style) {
         return new Span(new SpanBuilder() {
             @Override
@@ -384,6 +509,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see EmbossMaskFilter#EmbossMaskFilter(float[], float, float, float)
+     */
     public static Span emboss(final float[] direction, final float ambient, final float specular, final float blurRadius) {
         return new Span(new SpanBuilder() {
             @Override
@@ -393,6 +521,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.TabStopSpan
+     */
     public static Span tabStop(final int where) {
         return new Span(new SpanBuilder() {
             @Override
@@ -402,6 +533,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.TextAppearanceSpan#TextAppearanceSpan(Context, int)
+     */
     public static Span appearance(final Context context, final int appearance) {
         return new Span(new SpanBuilder() {
             @Override
@@ -411,6 +545,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.TextAppearanceSpan#TextAppearanceSpan(Context, int, int)
+     */
     public static Span appearance(final Context context, final int appearance, final int colorList) {
         return new Span(new SpanBuilder() {
             @Override
@@ -420,6 +557,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.TextAppearanceSpan#TextAppearanceSpan(String, int, int, ColorStateList, ColorStateList)
+     */
     public static Span appearance(final String family, final int style, final int size, final ColorStateList color, final ColorStateList linkColor) {
         return new Span(new SpanBuilder() {
             @Override
@@ -429,6 +569,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.LocaleSpan#LocaleSpan(Locale)
+     */
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     public static Span locale(final Locale locale) {
         return new Span(new SpanBuilder() {
@@ -439,6 +582,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.LocaleSpan#LocaleSpan(LocaleList)
+     */
     @RequiresApi(api = Build.VERSION_CODES.N)
     public static Span locale(final LocaleList localeList) {
         return new Span(new SpanBuilder() {
@@ -449,6 +595,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.SuggestionSpan
+     */
     public static Span suggestion(final Context context, final String[] suggestions, final int flags) {
         return new Span(new SpanBuilder() {
             @Override
@@ -458,6 +607,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.SuggestionSpan
+     */
     public static Span suggestion(final Locale locale, final String[] suggestions, final int flags) {
         return new Span(new SpanBuilder() {
             @Override
@@ -467,6 +619,9 @@ public class Spans {
         });
     }
 
+    /**
+     * @see android.text.style.SuggestionSpan
+     */
     public static Span suggestion(final Context context, final Locale locale, final String[] suggestions, final int flags, final Class<?> notificationTargetClass) {
         return new Span(new SpanBuilder() {
             @Override
