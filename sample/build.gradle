@@ -11,11 +11,7 @@ android {
     }
 }
 
-repositories {
-    maven { url 'https://jitpack.io' }
-}
-
 dependencies {
-    compile 'lt.neworld:spanner:c353c6fa50'
+    compile project(":lib")
     compile "com.android.support:appcompat-v7:$SUPPORT_LIB_VERSION"
 }
