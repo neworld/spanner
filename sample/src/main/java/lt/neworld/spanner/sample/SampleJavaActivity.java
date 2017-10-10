@@ -43,7 +43,8 @@ public class SampleJavaActivity extends AppCompatActivity {
         // @formatter:off
         Spannable spannable = new Spanner()
                 .append("Original text\n\n")
-                .append("big\n", Spans.sizePX(100))
+                .append("Big and blurry\n", Spans.sizePX(100))
+                .span("blurry", blur(5.0f, BlurMaskFilter.Blur.SOLID))
                 .append("big in DP\n", sizeDP(30))
                 .append("50% of original size\n", scaleSize(0.5f))
                 .append("bold\n", bold())

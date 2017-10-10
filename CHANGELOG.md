@@ -1,3 +1,8 @@
+### v0.3
+
+- Add missing spans
+- Add link to docs 
+
 ### v0.2
 
 - New span support: `click`, `url`, `custom`

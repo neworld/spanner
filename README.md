@@ -1,10 +1,11 @@
 [![](https://jitpack.io/v/neworld/spanner.svg)](https://jitpack.io/#neworld/spanner)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Spanner-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/6271)
 
 This lib provides simple and fluent API for creating [Android Spannable](https://developer.android.com/reference/android/text/Spannable.html).
 Features:
 - Simple and fluent API
 - Helpers to create spans
-- Small method footprint (<100 methods, 16kb AAR package)
+- Small method footprint (<200 methods, 24kb AAR package)
 
 This library focuses on building spannable. 
 If you prefer put full text first and then apply spans, take a look at [another awesome library](https://github.com/jaychang0917/SimpleText)
@@ -14,7 +15,8 @@ If you prefer put full text first and then apply spans, take a look at [another 
 ```java
 Spannable spannable = new Spanner()
         .append("Original text\n\n")
-        .append("big\n", Spans.sizePX(100))
+        .append("Big and blurry\n", Spans.sizePX(100))
+        .span("blurry", blur(5.0f, BlurMaskFilter.Blur.SOLID))
         .append("big in DP\n", sizeDP(30))
         .append("50% of original size\n", scaleSize(0.5f))
         .append("bold\n", bold())
@@ -35,7 +37,12 @@ Spannable spannable = new Spanner()
         .append("http://www.android.com\n", url("http://www.android.com"))
         ;
 ```
-Here is more methods to work with text:
+
+It looks like:
+
+![preview](https://i.imgur.com/SRnNRdm.png?1)
+
+You can manipulate text in many more ways:
 ```java
 Spannable spannable = new Spanner("The quick brown fox jumps over the lazy dog")
         .span("fox", foreground(Color.RED)) // search and span by given text
@@ -44,14 +51,7 @@ Spannable spannable = new Spanner("The quick brown fox jumps over the lazy dog")
         .append("bar", underline()); // any number of spans
 ```
 
-You can use `span` to apply spans on the existing text:
-```java
-Spannable spannable = new Spanner("The quick brown fox jumps over the lazy dog")
-        .span("fox", foreground(Color.RED))
-        .span("dog", foreground(Color.BLUE));
-```
-
-If you need custom span, you have to use builder:
+If you need custom span, you need span builder:
 ```
 //java 7
 Spannable spannable = new Spanner("The quick brown fox jumps over the lazy dog")
@@ -71,6 +71,35 @@ val spannable = Spanner("The quick brown fox jumps over the lazy dog")
         .span("fox", custom { StyleSpan(Typeface.ITALIC) })
 ```
 
+#### Reference
+
+| Main spans                         |
+|------------------------------------|
+| sizePx(int)                        |
+| sizeDP(int)                        |
+| scaleSize(float)                   |
+| bold()                             |
+| italic()                           |
+| boldItalic()                       |
+| font(String)                       |
+| strikeThrough()                    |
+| underline()                        |
+| background(int color)              |
+| foreground(int color)              |
+| subscript()                        |
+| superscript()                      |
+| image(...)                         |
+| click(listener)                    |
+| url(url)                           |
+| custom(spanBuilder)                |
+
+| Modify methods                    | Description                                    |
+| ---------------                   | ---------------------------                    |
+| append(text, spans...)            | appends text                                   |
+| replace(search, replace, spans...)| search and replace text                        |
+| span(search, spans...)            | search text and apply spans                    |
+| insert(pos, text, spans...)       | instert given text in given position           |
+
 #### How to use
 ```
     allprojects {
@@ -81,7 +110,7 @@ val spannable = Spanner("The quick brown fox jumps over the lazy dog")
     }
 	
     dependencies {
-        compile 'lt.neworld:spanner:v0.2'
+        compile 'lt.neworld:spanner:v0.3'
     }
 ```
 
