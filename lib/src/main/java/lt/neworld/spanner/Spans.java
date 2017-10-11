@@ -10,30 +10,21 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.LocaleList;
-import android.os.Parcel;
 import android.support.annotation.ColorInt;
 import android.support.annotation.Dimension;
 import android.support.annotation.FloatRange;
 import android.support.annotation.RequiresApi;
 import android.text.Layout;
-import android.text.style.AbsoluteSizeSpan;
-import android.text.style.AlignmentSpan;
-import android.text.style.BackgroundColorSpan;
 import android.text.style.BulletSpan;
 import android.text.style.ClickableSpan;
-import android.text.style.DrawableMarginSpan;
 import android.text.style.EasyEditSpan;
-import android.text.style.ForegroundColorSpan;
-import android.text.style.IconMarginSpan;
 import android.text.style.ImageSpan;
-import android.text.style.LeadingMarginSpan;
 import android.text.style.LocaleSpan;
 import android.text.style.MaskFilterSpan;
 import android.text.style.QuoteSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.ScaleXSpan;
 import android.text.style.StrikethroughSpan;
-import android.text.style.StyleSpan;
 import android.text.style.SubscriptSpan;
 import android.text.style.SuggestionSpan;
 import android.text.style.SuperscriptSpan;
@@ -60,24 +51,14 @@ public class Spans {
      * @see android.text.style.AbsoluteSizeSpan#AbsoluteSizeSpan(int)
      */
     public static Span sizePX(@Dimension(unit = Dimension.PX) final int px) {
-        return new Span(new SpanBuilder() {
-            @Override
-            public Object build() {
-                return new AbsoluteSizeSpan(px, false);
-            }
-        });
+        return new Span(new AbsoluteSizeSpanBuilder(px, false));
     }
 
     /**
      * @see android.text.style.AbsoluteSizeSpan#AbsoluteSizeSpan(int, boolean)
      */
     public static Span sizeDP(@Dimension(unit = Dimension.DP) final int dp) {
-        return new Span(new SpanBuilder() {
-            @Override
-            public Object build() {
-                return new AbsoluteSizeSpan(dp, true);
-            }
-        });
+        return new Span(new AbsoluteSizeSpanBuilder(dp, true));
     }
 
     /**
@@ -108,36 +89,21 @@ public class Spans {
      * @see android.text.style.StyleSpan
      */
     public static Span bold() {
-        return new Span(new SpanBuilder() {
-            @Override
-            public Object build() {
-                return new StyleSpan(Typeface.BOLD);
-            }
-        });
+        return new Span(new StyleSpanBuilder(Typeface.BOLD));
     }
 
     /**
      * @see android.text.style.StyleSpan
      */
     public static Span italic() {
-        return new Span(new SpanBuilder() {
-            @Override
-            public Object build() {
-                return new StyleSpan(Typeface.ITALIC);
-            }
-        });
+        return new Span(new StyleSpanBuilder(Typeface.ITALIC));
     }
 
     /**
      * @see android.text.style.StyleSpan
      */
     public static Span boldItalic() {
-        return new Span(new SpanBuilder() {
-            @Override
-            public Object build() {
-                return new StyleSpan(Typeface.BOLD_ITALIC);
-            }
-        });
+        return new Span(new StyleSpanBuilder(Typeface.BOLD_ITALIC));
     }
 
     /**
@@ -180,24 +146,14 @@ public class Spans {
      * @see android.text.style.BackgroundColorSpan#BackgroundColorSpan(int)
      */
     public static Span background(@ColorInt final int color) {
-        return new Span(new SpanBuilder() {
-            @Override
-            public Object build() {
-                return new BackgroundColorSpan(color);
-            }
-        });
+        return new Span(new ColorSpanBuilder(ColorSpanBuilder.BACKGROUND, color));
     }
 
     /**
      * @see android.text.style.ForegroundColorSpan#ForegroundColorSpan(int)
      */
     public static Span foreground(@ColorInt final int color) {
-        return new Span(new SpanBuilder() {
-            @Override
-            public Object build() {
-                return new ForegroundColorSpan(color);
-            }
-        });
+        return new Span(new ColorSpanBuilder(ColorSpanBuilder.FOREGROUND, color));
     }
 
     /**
@@ -252,24 +208,14 @@ public class Spans {
      * @see QuoteSpan#QuoteSpan()
      */
     public static Span quote() {
-        return new Span(new SpanBuilder() {
-            @Override
-            public Object build() {
-                return new QuoteSpan();
-            }
-        });
+        return new Span(new QuoteSpanBuilder(null));
     }
 
     /**
      * @see android.text.style.QuoteSpan#QuoteSpan(int)
      */
     public static Span quote(@ColorInt final int color) {
-        return new Span(new SpanBuilder() {
-            @Override
-            public Object build() {
-                return new QuoteSpan(color);
-            }
-        });
+        return new Span(new QuoteSpanBuilder(color));
     }
 
     /**
@@ -299,17 +245,7 @@ public class Spans {
      * @see ClickableSpan
      */
     public static Span click(final View.OnClickListener onClickListener) {
-        return new Span(new SpanBuilder() {
-            @Override
-            public Object build() {
-                return new ClickableSpan() {
-                    @Override
-                    public void onClick(View view) {
-                        onClickListener.onClick(view);
-                    }
-                };
-            }
-        });
+        return new Span(new ClickSpanBuilder(onClickListener));
     }
 
     /**
@@ -328,96 +264,56 @@ public class Spans {
      * @see android.text.style.AlignmentSpan.Standard#Standard(Layout.Alignment)
      */
     public static Span center() {
-        return new Span(new SpanBuilder() {
-            @Override
-            public Object build() {
-                return new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER);
-            }
-        });
+        return new Span(new AlignmentSpanBuilder(Layout.Alignment.ALIGN_CENTER));
     }
 
     /**
      * @see android.text.style.AlignmentSpan.Standard#Standard(Layout.Alignment)
      */
     public static Span alignmentOpposite() {
-        return new Span(new SpanBuilder() {
-            @Override
-            public Object build() {
-                return new AlignmentSpan.Standard(Layout.Alignment.ALIGN_OPPOSITE);
-            }
-        });
+        return new Span(new AlignmentSpanBuilder(Layout.Alignment.ALIGN_OPPOSITE));
     }
 
     /**
      * @see android.text.style.AlignmentSpan.Standard#Standard(Layout.Alignment)
      */
     public static Span alignmentNormal() {
-        return new Span(new SpanBuilder() {
-            @Override
-            public Object build() {
-                return new AlignmentSpan.Standard(Layout.Alignment.ALIGN_NORMAL);
-            }
-        });
+        return new Span(new AlignmentSpanBuilder(Layout.Alignment.ALIGN_NORMAL));
     }
 
     /**
      * @see android.text.style.BulletSpan#BulletSpan(int, int)
      */
-    public static Span bullet(final int gapWidth, final int color) {
-        return new Span(new SpanBuilder() {
-            @Override
-            public Object build() {
-                return new BulletSpan(gapWidth, color);
-            }
-        });
+    public static Span bullet(final int gapWidth, @ColorInt final int color) {
+        return new Span(new BulletSpanBuilder(gapWidth, color));
     }
 
     /**
      * @see android.text.style.BulletSpan#BulletSpan(int)
      */
     public static Span bullet(final int gapWidth) {
-        return new Span(new SpanBuilder() {
-            @Override
-            public Object build() {
-                return new BulletSpan(gapWidth);
-            }
-        });
+        return new Span(new BulletSpanBuilder(gapWidth, null));
     }
 
     /**
      * @see BulletSpan#BulletSpan()
      */
     public static Span bullet() {
-        return new Span(new SpanBuilder() {
-            @Override
-            public Object build() {
-                return new BulletSpan();
-            }
-        });
+        return new Span(new BulletSpanBuilder(null, null));
     }
 
     /**
      * @see android.text.style.DrawableMarginSpan#DrawableMarginSpan(Drawable)
      */
     public static Span imageMargin(final Drawable drawable) {
-        return new Span(new SpanBuilder() {
-            @Override
-            public Object build() {
-                return new DrawableMarginSpan(drawable);
-            }
-        });
+        return new Span(new ImageSpanBuilder(drawable, null, null));
     }
 
     /**
      * @see android.text.style.DrawableMarginSpan#DrawableMarginSpan(Drawable, int)
      */
     public static Span imageMargin(final Drawable drawable, final int pad) {
-        return new Span(new SpanBuilder() {
-            @Override
-            public Object build() {
-                return new DrawableMarginSpan(drawable, pad);
-            }
-        });
+        return new Span(new ImageSpanBuilder(drawable, null, pad));
     }
 
     /**
@@ -451,24 +347,14 @@ public class Spans {
      * @see android.text.style.IconMarginSpan#IconMarginSpan(Bitmap)
      */
     public static Span imageMargin(final Bitmap image) {
-        return new Span(new SpanBuilder() {
-            @Override
-            public Object build() {
-                return new IconMarginSpan(image);
-            }
-        });
+        return new Span(new ImageSpanBuilder(null, image, null));
     }
 
     /**
      * @see android.text.style.IconMarginSpan#IconMarginSpan(Bitmap, int)
      */
     public static Span imageMargin(final Bitmap image, final int pad) {
-        return new Span(new SpanBuilder() {
-            @Override
-            public Object build() {
-                return new IconMarginSpan(image, pad);
-            }
-        });
+        return new Span(new ImageSpanBuilder(null, image, pad));
     }
 
     /**
@@ -476,25 +362,15 @@ public class Spans {
      * @see android.text.style.LeadingMarginSpan.Standard#Standard(int, int)
      */
     public static Span leadingMargin(final int first, final int rest) {
-        return new Span(new SpanBuilder() {
-            @Override
-            public Object build() {
-                return new LeadingMarginSpan.Standard(first, rest);
-            }
-        });
+        return new Span(new LeadingMarginSpanBuilder(first, rest));
     }
 
     /**
      * @see android.text.style.LeadingMarginSpan
      * @see android.text.style.LeadingMarginSpan.Standard#Standard(int)
      */
-    public static Span leadingMargin(final int first) {
-        return new Span(new SpanBuilder() {
-            @Override
-            public Object build() {
-                return new LeadingMarginSpan.Standard(first);
-            }
-        });
+    public static Span leadingMargin(final int every) {
+        return new Span(new LeadingMarginSpanBuilder(every, null));
     }
 
     /**
