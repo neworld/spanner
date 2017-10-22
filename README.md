@@ -73,27 +73,23 @@ val spannable = Spanner("The quick brown fox jumps over the lazy dog")
 
 #### Reference
 
-| Main spans                         |
-|------------------------------------|
-| sizePx(int)                        |
-| sizeDP(int)                        |
-| scaleSize(float)                   |
-| bold()                             |
-| italic()                           |
-| boldItalic()                       |
-| font(String)                       |
-| strikeThrough()                    |
-| underline()                        |
-| background(int color)              |
-| foreground(int color)              |
-| subscript()                        |
-| superscript()                      |
-| image(...)                         |
-| click(listener)                    |
-| url(url)                           |
-| custom(spanBuilder)                |
+Spans:
 
-| Modify methods                    | Description                                    |
+| sizePx(int)             | background(int color)   | center()              |
+| sizeDP(int)             | foreground(int color)   | alignmentOpposite()   |
+| scaleSize(float)        | subscript()             | alignmentNormal()     |
+| bold()                  | superscript()           | bullet(...)           |
+| italic()                | image(...)              | imageMargin(...)      |
+| boldItalic()            | click(listener)         | leadingMargin(...)    |
+| font(String)            | url(url)                | edit(...)             |
+| strikeThrough()         | custom(spanBuilder)     | emboss(...)           |
+| underline()             | quote()                 | blur(...)             |
+| tabStop(where)          | appearance(...)         | locale(...)           |
+| suggestion(...)         |                         |                       |
+
+Text manipulation:
+
+| Methods                           | Description                                    |
 | ---------------                   | ---------------------------                    |
 | append(text, spans...)            | appends text                                   |
 | replace(search, replace, spans...)| search and replace text                        |
