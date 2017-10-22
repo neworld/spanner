@@ -1,3 +1,8 @@
+### v0.3.1
+
+- Reduced methods
+- Add nullability annotations
+
 ### v0.3
 
 - Add missing spans

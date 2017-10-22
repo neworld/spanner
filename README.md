@@ -5,7 +5,7 @@ This lib provides simple and fluent API for creating [Android Spannable](https:/
 Features:
 - Simple and fluent API
 - Helpers to create spans
-- Small method footprint (<200 methods, 24kb AAR package)
+- Small method footprint (<200 methods, 28kb AAR package)
 
 This library focuses on building spannable. 
 If you prefer put full text first and then apply spans, take a look at [another awesome library](https://github.com/jaychang0917/SimpleText)
@@ -75,6 +75,8 @@ val spannable = Spanner("The quick brown fox jumps over the lazy dog")
 
 Spans:
 
+|                         |                         |                       |
+| ---                     | ---                     | ---                   |
 | sizePx(int)             | background(int color)   | center()              |
 | sizeDP(int)             | foreground(int color)   | alignmentOpposite()   |
 | scaleSize(float)        | subscript()             | alignmentNormal()     |
@@ -106,7 +108,7 @@ Text manipulation:
     }
 	
     dependencies {
-        compile 'lt.neworld:spanner:v0.3'
+        compile 'lt.neworld:spanner:v0.3.1'
     }
 ```
 
