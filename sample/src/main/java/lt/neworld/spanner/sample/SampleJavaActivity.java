@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.LocaleList;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Spannable;
 import android.text.method.LinkMovementMethod;
@@ -13,6 +14,8 @@ import android.text.style.StyleSpan;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Locale;
 
 import lt.neworld.spanner.SpanBuilder;
 import lt.neworld.spanner.Spanner;
