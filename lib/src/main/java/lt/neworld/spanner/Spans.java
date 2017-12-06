@@ -36,6 +36,7 @@ import android.text.style.TypefaceSpan;
 import android.text.style.URLSpan;
 import android.text.style.UnderlineSpan;
 import android.view.View;
+import android.widget.TextView;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -246,6 +247,12 @@ public class Spans {
     }
 
     /**
+     * Clicks won't work with default {@link TextView#getMovementMethod()}.
+     * You must set {@link android.text.method.LinkMovementMethod}.<p>
+     * Example:<p>
+     * <pre><code>
+     * textView.setMovementMethod(new LinkMovementMethod());
+     * </code></pre>
      * @see ClickableSpan
      */
     public static Span click(@NonNull final View.OnClickListener onClickListener) {
@@ -253,6 +260,8 @@ public class Spans {
     }
 
     /**
+     * Clicks won't work with default {@link TextView#getMovementMethod()}.
+     * @see #click(View.OnClickListener)
      * @see android.text.style.URLSpan#URLSpan(String)
      */
     public static Span url(@NonNull final String url) {
