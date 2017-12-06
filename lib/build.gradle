@@ -24,15 +24,15 @@ android {
 }
 
 dependencies {
-    compile "com.android.support:support-annotations:$SUPPORT_LIB_VERSION"
+    api "com.android.support:support-annotations:$SUPPORT_LIB_VERSION"
 
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    testCompile 'junit:junit:4.12'
-    testCompile "org.robolectric:robolectric:3.5.1"
-    testCompile "org.jetbrains.kotlin:kotlin-reflect:$KOTLIN_VERSION"
-    provided "org.jetbrains.kotlin:kotlin-runtime:$KOTLIN_VERSION"
+    testImplementation 'junit:junit:4.12'
+    testImplementation "org.robolectric:robolectric:3.5.1"
+    testImplementation "org.jetbrains.kotlin:kotlin-reflect:$KOTLIN_VERSION"
+    compileOnly "org.jetbrains.kotlin:kotlin-runtime:$KOTLIN_VERSION"
 }
 
 project.afterEvaluate {
