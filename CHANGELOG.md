@@ -1,3 +1,8 @@
+### v0.3.2
+
+- Improve documentation about click
+- Include source and doc artifacts
+
 ### v0.3.1
 
 - Reduced methods
