@@ -12,6 +12,6 @@ android {
 }
 
 dependencies {
-    compile project(":lib")
+    compile 'com.github.neworld:spanner:feature~source_artifact-SNAPSHOT'
     compile "com.android.support:appcompat-v7:$SUPPORT_LIB_VERSION"
 }
