@@ -1,3 +1,10 @@
+### 0.4.0
+
+- Change version naming by removing prefix `v`
+- Add `sizeSP(int)`
+- Add `Spanner.append(image(...))` for appending images without effort
+- Updated build tools
+
 ### v0.3.2
 
 - Improve documentation about click

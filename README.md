@@ -1,13 +1,13 @@
 [![](https://jitpack.io/v/neworld/spanner.svg)](https://jitpack.io/#neworld/spanner)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Spanner-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/6271)
 [![Build Status](https://travis-ci.org/neworld/spanner.svg?branch=master)](https://travis-ci.org/neworld/spanner)
-[![Javadoc](https://img.shields.io/badge/javadoc-v0.3.2-brightgreen.svg)](https://jitpack.io/com/github/neworld/spanner/v0.3.2/javadoc/index.html)
+[![Javadoc](https://img.shields.io/badge/javadoc-0.4.0-brightgreen.svg)](https://jitpack.io/com/github/neworld/spanner/0.4.0/javadoc/index.html)
 
 This lib provides simple and fluent API for creating [Android Spannable](https://developer.android.com/reference/android/text/Spannable.html).
 Features:
 - Simple and fluent API
 - Helpers to create spans
-- Small method footprint (<200 methods, 28kb AAR package)
+- Small method footprint (<200 methods, 29kb AAR package)
 
 This library focuses on building spannable. 
 If you prefer put full text first and then apply spans, take a look at [another awesome library](https://github.com/jaychang0917/SimpleText)
@@ -111,7 +111,7 @@ Text manipulation:
     }
 	
     dependencies {
-        compile 'lt.neworld:spanner:v0.3.2'
+        compile 'lt.neworld:spanner:0.4.0'
     }
 ```
 
