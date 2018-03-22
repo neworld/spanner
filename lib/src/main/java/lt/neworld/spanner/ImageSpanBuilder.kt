@@ -5,10 +5,6 @@ import android.graphics.drawable.Drawable
 import android.text.style.DrawableMarginSpan
 import android.text.style.IconMarginSpan
 
-/**
- * @author Andrius Semionovas
- * @since 2017-10-11
- */
 internal class ImageSpanBuilder(private val drawable: Drawable?, private val bitmap: Bitmap?, private val pad: Int?) : SpanBuilder {
     override fun build(): Any {
         return if (drawable != null && pad != null) {

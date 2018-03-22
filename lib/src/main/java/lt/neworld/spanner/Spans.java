@@ -39,11 +39,6 @@ import android.view.View;
 import android.widget.TextView;
 import java.util.Locale;
 
-/**
- * @author Andrius Semionovas
- * @since 2017-10-01
- */
-
 public class Spans {
     private Spans() {
         //hide

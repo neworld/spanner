@@ -4,10 +4,6 @@ import android.support.annotation.RequiresApi
 import android.text.SpannableStringBuilder
 import android.text.TextUtils
 
-/**
- * @author Andrius Semionovas
- * @since 2017-08-01
- */
 class Spanner(text: CharSequence?) : SpannableStringBuilder(text) {
     constructor() : this("")
 

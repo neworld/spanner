@@ -3,10 +3,6 @@ package lt.neworld.spanner
 import android.text.style.ClickableSpan
 import android.view.View
 
-/**
- * @author Andrius Semionovas
- * @since 2017-10-11
- */
 internal class ClickSpanBuilder(private val clickListener: View.OnClickListener) : SpanBuilder {
     override fun build(): Any = EasyClickableSpan(clickListener)
 

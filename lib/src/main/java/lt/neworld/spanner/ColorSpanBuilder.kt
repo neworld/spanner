@@ -4,10 +4,6 @@ import android.support.annotation.ColorInt
 import android.text.style.BackgroundColorSpan
 import android.text.style.ForegroundColorSpan
 
-/**
- * @author Andrius Semionovas
- * @since 2017-10-11
- */
 internal class ColorSpanBuilder(private val type: Int, @ColorInt private val color: Int) : SpanBuilder {
     override fun build(): Any {
         return when (type) {
