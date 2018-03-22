@@ -1,7 +1,7 @@
 [![](https://jitpack.io/v/neworld/spanner.svg)](https://jitpack.io/#neworld/spanner)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Spanner-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/6271)
 [![Build Status](https://travis-ci.org/neworld/spanner.svg?branch=master)](https://travis-ci.org/neworld/spanner)
-[![Javadoc](https://img.shields.io/badge/javadoc-0.4.0-brightgreen.svg)](https://jitpack.io/com/github/neworld/spanner/0.4.0/javadoc/index.html)
+[![Javadoc](https://img.shields.io/badge/javadoc-0.4.0-brightgreen.svg)](https://jitpack.io/com/github/neworld/spanner/0.4.0/javadoc/)
 
 This lib provides simple and fluent API for creating [Android Spannable](https://developer.android.com/reference/android/text/Spannable.html).
 Features:
