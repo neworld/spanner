@@ -192,8 +192,8 @@ public class Spans {
     /**
      * @see android.text.style.ImageSpan#ImageSpan(Drawable)
      */
-    public static Span image(@NonNull final Drawable drawable) {
-        return new Span(new SpanBuilder() {
+    public static lt.neworld.spanner.ImageSpan image(@NonNull final Drawable drawable) {
+        return new lt.neworld.spanner.ImageSpan(new SpanBuilder() {
             @Override
             public Object build() {
                 return new ImageSpan(drawable);
@@ -204,8 +204,8 @@ public class Spans {
     /**
      * @see android.text.style.ImageSpan#ImageSpan(Drawable, int)
      */
-    public static Span image(@NonNull final Drawable drawable, final int verticalAlignment) {
-        return new Span(new SpanBuilder() {
+    public static lt.neworld.spanner.ImageSpan image(@NonNull final Drawable drawable, final int verticalAlignment) {
+        return new lt.neworld.spanner.ImageSpan(new SpanBuilder() {
             @Override
             public Object build() {
                 return new ImageSpan(drawable, verticalAlignment);

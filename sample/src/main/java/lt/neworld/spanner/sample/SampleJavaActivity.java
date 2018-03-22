@@ -60,7 +60,7 @@ public class SampleJavaActivity extends AppCompatActivity {
                 .append("foreground\n", foreground(Color.RED))
                 .append("subscript\n", subscript())
                 .append("superscript\n", superscript())
-                .append(" \n", image(drawable))
+                .append(image(drawable)).append("\n")
                 .append("quite\n", quote())
                 .append("The quick brown fox jumps over the lazy dog\n", bold(), foreground(0xFF904f1c), Spans.quote())
                 .span("fox", foreground(Color.RED))

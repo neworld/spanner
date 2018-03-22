@@ -82,6 +82,16 @@ class Spanner(text: CharSequence?) : SpannableStringBuilder(text) {
         return this
     }
 
+    fun append(span: ImageSpan): Spanner {
+        val start = length
+
+        append(" ")
+
+        setSpans(start, length, span)
+
+        return this
+    }
+
     fun insert(where: Int, text: CharSequence, vararg spans: Span): Spanner {
         super.insert(where, text)
 

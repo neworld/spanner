@@ -31,7 +31,7 @@ Spannable spannable = new Spanner()
         .append("foreground\n", foreground(Color.RED))
         .append("subscript\n", subscript())
         .append("superscript\n", superscript())
-        .append(" \n", image(getResources().getDrawable(R.drawable.ic_android_16dp)))
+        .append(image(getResources().getDrawable(R.drawable.ic_android_16dp))).append("\n")
         .append("quite\n", quote())
         .append("The quick brown fox jumps over the lazy dog\n", bold(), foreground(0xFF904f1c), Spans.quote())
         .append("Custom\n", custom(new CustomSpan()))
@@ -96,6 +96,7 @@ Text manipulation:
 | Methods                           | Description                                    |
 | ---------------                   | ---------------------------                    |
 | append(text, spans...)            | appends text                                   |
+| append(image(...))                | appends image                                  |
 | replace(search, replace, spans...)| search and replace text                        |
 | span(search, spans...)            | search text and apply spans                    |
 | insert(pos, text, spans...)       | insert given text in given position            |
