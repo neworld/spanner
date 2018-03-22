@@ -79,17 +79,17 @@ Spans:
 
 |                         |                         |                       |
 | ---                     | ---                     | ---                   |
-| sizePx(int)             | background(int color)   | center()              |
+| sizePX(int)             | background(int color)   | center()              |
 | sizeDP(int)             | foreground(int color)   | alignmentOpposite()   |
-| scaleSize(float)        | subscript()             | alignmentNormal()     |
-| bold()                  | superscript()           | bullet(...)           |
-| italic()                | image(...)              | imageMargin(...)      |
-| boldItalic()            | click(listener)         | leadingMargin(...)    |
-| font(String)            | url(url)                | edit(...)             |
-| strikeThrough()         | custom(spanBuilder)     | emboss(...)           |
-| underline()             | quote()                 | blur(...)             |
-| tabStop(where)          | appearance(...)         | locale(...)           |
-| suggestion(...)         |                         |                       |
+| sizeSP(int)             | subscript()             | alignmentNormal()     |
+| scaleSize(float)        | superscript()           | bullet(...)           |
+| bold()                  | image(...)              | imageMargin(...)      |
+| italic()                | click(listener)         | leadingMargin(...)    |
+| boldItalic()            | url(url)                | edit(...)             |
+| font(String)            | custom(spanBuilder)     | emboss(...)           |
+| strikeThrough()         | quote()                 | blur(...)             |
+| underline()             | appearance(...)         | locale(...)           |
+| tabStop(where)          | suggestion(...)         |                       |
 
 Text manipulation:
 
@@ -98,7 +98,7 @@ Text manipulation:
 | append(text, spans...)            | appends text                                   |
 | replace(search, replace, spans...)| search and replace text                        |
 | span(search, spans...)            | search text and apply spans                    |
-| insert(pos, text, spans...)       | instert given text in given position           |
+| insert(pos, text, spans...)       | insert given text in given position            |
 
 #### How to use
 ```

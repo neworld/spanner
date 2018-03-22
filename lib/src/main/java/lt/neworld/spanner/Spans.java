@@ -37,9 +37,6 @@ import android.text.style.URLSpan;
 import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.TextView;
-
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Locale;
 
 /**
@@ -64,6 +61,13 @@ public class Spans {
      */
     public static Span sizeDP(@Dimension(unit = Dimension.DP) final int dp) {
         return new Span(new AbsoluteSizeSpanBuilder(dp, true));
+    }
+
+    /**
+     * @see android.text.style.AbsoluteSizeSpan#AbsoluteSizeSpan(int, boolean)
+     */
+    public static Span sizeSP(@Dimension(unit = Dimension.SP) final int sp) {
+        return new Span(new AbsoluteSizeSpanBuilder(sp, true));
     }
 
     /**
