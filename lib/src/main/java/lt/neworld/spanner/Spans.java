@@ -6,12 +6,14 @@ import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BlurMaskFilter;
 import android.graphics.EmbossMaskFilter;
+import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.LocaleList;
 import android.support.annotation.ColorInt;
 import android.support.annotation.Dimension;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.FloatRange;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -185,6 +187,7 @@ public class Spans {
     }
 
     /**
+     * The drawable must already have bounds ({@link Drawable#setBounds(Rect)})
      * @see android.text.style.ImageSpan#ImageSpan(Drawable)
      */
     public static lt.neworld.spanner.ImageSpan image(@NonNull final Drawable drawable) {
@@ -197,6 +200,7 @@ public class Spans {
     }
 
     /**
+     * The drawable must already have bounds ({@link Drawable#setBounds(Rect)})
      * @see android.text.style.ImageSpan#ImageSpan(Drawable, int)
      */
     public static lt.neworld.spanner.ImageSpan image(@NonNull final Drawable drawable, final int verticalAlignment) {
@@ -204,6 +208,30 @@ public class Spans {
             @Override
             public Object build() {
                 return new ImageSpan(drawable, verticalAlignment);
+            }
+        });
+    }
+
+    /**
+     * @see android.text.style.ImageSpan#ImageSpan(Context, int, int)
+     */
+    public static lt.neworld.spanner.ImageSpan image(final Context context, @DrawableRes final int drawableId, final int verticalAlignment) {
+        return new lt.neworld.spanner.ImageSpan(new SpanBuilder() {
+            @Override
+            public Object build() {
+                return new ImageSpan(context, drawableId, verticalAlignment);
+            }
+        });
+    }
+
+    /**
+     * @see android.text.style.ImageSpan#ImageSpan(Context, int)
+     */
+    public static lt.neworld.spanner.ImageSpan image(final Context context, @DrawableRes final int drawableId) {
+        return new lt.neworld.spanner.ImageSpan(new SpanBuilder() {
+            @Override
+            public Object build() {
+                return new ImageSpan(context, drawableId);
             }
         });
     }

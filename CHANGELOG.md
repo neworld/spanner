@@ -1,3 +1,7 @@
+### 0.5.0
+
+- Add image from resource id support
+
 ### 0.4.0
 
 - Change version naming by removing prefix `v`

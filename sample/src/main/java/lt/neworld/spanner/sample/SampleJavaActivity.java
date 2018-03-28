@@ -41,7 +41,7 @@ public class SampleJavaActivity extends AppCompatActivity {
             }
         };
         Drawable drawable = getResources().getDrawable(R.drawable.ic_android_16dp);
-        drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+        drawable.setBounds(0, 0, drawable.getIntrinsicWidth() * 2, drawable.getIntrinsicHeight() * 2);
 
         // @formatter:off
         Spannable spannable = new Spanner()
@@ -60,7 +60,8 @@ public class SampleJavaActivity extends AppCompatActivity {
                 .append("foreground\n", foreground(Color.RED))
                 .append("subscript\n", subscript())
                 .append("superscript\n", superscript())
-                .append(image(drawable)).append("\n")
+                .append("Image with custom bounds: ").append(image(drawable)).append("\n")
+                .append("Image from resources: ").append(image(this, R.drawable.ic_android_16dp)).append("\n")
                 .append("quite\n", quote())
                 .append("The quick brown fox jumps over the lazy dog\n", bold(), foreground(0xFF904f1c), Spans.quote())
                 .span("fox", foreground(Color.RED))

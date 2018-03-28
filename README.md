@@ -1,7 +1,7 @@
 [![](https://jitpack.io/v/neworld/spanner.svg)](https://jitpack.io/#neworld/spanner)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Spanner-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/6271)
 [![Build Status](https://travis-ci.org/neworld/spanner.svg?branch=master)](https://travis-ci.org/neworld/spanner)
-[![Javadoc](https://img.shields.io/badge/javadoc-0.4.0-brightgreen.svg)](https://jitpack.io/com/github/neworld/spanner/0.4.0/javadoc/)
+[![Javadoc](https://img.shields.io/badge/javadoc-0.5.0-brightgreen.svg)](https://jitpack.io/com/github/neworld/spanner/0.5.0/javadoc/)
 
 This lib provides simple and fluent API for creating [Android Spannable](https://developer.android.com/reference/android/text/Spannable.html).
 Features:
@@ -31,7 +31,7 @@ Spannable spannable = new Spanner()
         .append("foreground\n", foreground(Color.RED))
         .append("subscript\n", subscript())
         .append("superscript\n", superscript())
-        .append(image(getResources().getDrawable(R.drawable.ic_android_16dp))).append("\n")
+        .append(image(context, R.drawable.ic_android_16dp)).append("\n")
         .append("quite\n", quote())
         .append("The quick brown fox jumps over the lazy dog\n", bold(), foreground(0xFF904f1c), Spans.quote())
         .append("Custom\n", custom(new CustomSpan()))
@@ -111,7 +111,7 @@ Text manipulation:
     }
 	
     dependencies {
-        compile 'lt.neworld:spanner:0.4.0'
+        compile 'lt.neworld:spanner:0.5.0'
     }
 ```
 
