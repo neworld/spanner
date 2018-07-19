@@ -111,7 +111,7 @@ Text manipulation:
     }
 	
     dependencies {
-        compile 'lt.neworld:spanner:0.5.0'
+        implementation 'lt.neworld:spanner:0.5.0'
     }
 ```
 
