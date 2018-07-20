@@ -142,4 +142,15 @@ class Spanner(text: CharSequence?) : SpannableStringBuilder(text) {
 
         return this
     }
+
+    fun span(startIndex: Int,search: CharSequence, vararg spans: Span): Spanner {
+        if (TextUtils.isEmpty(search) || startIndex < 0) {
+
+            return this
+        }
+        val index = TextUtils.indexOf(this, search, startIndex)
+        if (index > -1) setSpans(index, index + search.length, *spans)
+
+        return this
+    }
 }
