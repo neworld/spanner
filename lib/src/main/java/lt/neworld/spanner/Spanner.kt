@@ -126,12 +126,18 @@ class Spanner(text: CharSequence?) : SpannableStringBuilder(text) {
     }
 
     fun span(search: CharSequence, vararg spans: Span): Spanner {
+        span(0, search, *spans)
+
+        return this
+    }
+
+    fun span(startIndex: Int, search: CharSequence, vararg spans: Span): Spanner {
         if (TextUtils.isEmpty(search)) {
             setSpans(0, length, *spans)
             return this
         }
 
-        var lastPos: Int = -1
+        var lastPos: Int = startIndex - 1
 
         while (true) {
             lastPos = TextUtils.indexOf(this, search, lastPos + 1)
