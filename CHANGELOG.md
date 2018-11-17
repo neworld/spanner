@@ -1,3 +1,8 @@
+### 1.0.0
+
+- Add `span(startIndex, searchText, spans)` method
+- Update dependencies
+
 ### 0.5.0
 
 - Add image from resource id support
