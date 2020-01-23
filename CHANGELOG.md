@@ -1,3 +1,8 @@
+### 1.1.0
+
+- Add `lineBackground` and `lineHeight` for Android Q
+- Bump compile SDK to 29
+
 ### 1.0.0
 
 - Add `span(startIndex, searchText, spans)` method
