@@ -89,7 +89,8 @@ Spans:
 | font(String)            | custom(spanBuilder)     | emboss(...)           |
 | strikeThrough()         | quote()                 | blur(...)             |
 | underline()             | appearance(...)         | locale(...)           |
-| tabStop(where)          | suggestion(...)         |                       |
+| tabStop(where)          | suggestion(...)         | lineBackground(color) |
+| lineHeight(height)      |
 
 Text manipulation:
 

@@ -15,8 +15,10 @@ import android.support.annotation.ColorInt;
 import android.support.annotation.Dimension;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.FloatRange;
+import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.Px;
 import android.support.annotation.RequiresApi;
 import android.text.Layout;
 import android.text.style.BulletSpan;
@@ -40,6 +42,20 @@ import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.TextView;
 import java.util.Locale;
+
+import lt.neworld.spanner.AbsoluteSizeSpanBuilder;
+import lt.neworld.spanner.AlignmentSpanBuilder;
+import lt.neworld.spanner.BulletSpanBuilder;
+import lt.neworld.spanner.ClickSpanBuilder;
+import lt.neworld.spanner.ColorSpanBuilder;
+import lt.neworld.spanner.ImageSpanBuilder;
+import lt.neworld.spanner.LeadingMarginSpanBuilder;
+import lt.neworld.spanner.LineHeightSpanBuilder;
+import lt.neworld.spanner.QuoteSpanBuilder;
+import lt.neworld.spanner.Span;
+import lt.neworld.spanner.SpanBuilder;
+import lt.neworld.spanner.StyleSpanBuilder;
+import lt.neworld.spanner.LineBackgroundSpanBuilder;
 
 public class Spans {
     private Spans() {
@@ -160,6 +176,24 @@ public class Spans {
      */
     public static Span foreground(@ColorInt final int color) {
         return new Span(new ColorSpanBuilder(ColorSpanBuilder.FOREGROUND, color));
+    }
+
+    /**
+     *
+     * @see android.text.style.LineBackgroundSpan.Standard
+     */
+    @RequiresApi(api = Build.VERSION_CODES.Q)
+    public static Span lineBackground(@ColorInt final int color) {
+        return new Span(new LineBackgroundSpanBuilder(color));
+    }
+
+    /**
+     *
+     * @see android.text.style.LineHeightSpan.Standard
+     */
+    @RequiresApi(api = Build.VERSION_CODES.Q)
+    public static Span lineHeight(@Px @IntRange(from = 1) final int height) {
+        return new Span(new LineHeightSpanBuilder(height));
     }
 
     /**
