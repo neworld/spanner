@@ -94,13 +94,13 @@ Spans:
 
 Text manipulation:
 
-| Methods                           | Description                                    |
-| ---------------                   | ---------------------------                    |
-| append(text, spans...)            | appends text                                   |
-| append(image(...))                | appends image                                  |
-| replace(search, replace, spans...)| search and replace text                        |
-| span(search, spans...)            | search text and apply spans                    |
-| insert(pos, text, spans...)       | insert given text in given position            |
+| Methods                                   | Description                                    |
+| ---------------                           | ---------------------------                    |
+| append(text, spans...)                    | appends text                                   |
+| append(image(...))                        | appends image                                  |
+| replace(search, replace, spans...)        | search and replace text                        |
+| span(search, ignoreCase = false, spans...)| search text and apply spans                    |
+| insert(pos, text, spans...)               | insert given text in given position            |
 
 #### How to use
 ```

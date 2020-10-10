@@ -6,7 +6,6 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
-import java.lang.StringBuilder
 
 /**
  * @author Andrius Semionovas
@@ -110,8 +109,21 @@ class SpannerTest {
         assertSpans("foo <StyleSpan>bar</StyleSpan>", Spanner().append("foo bar").span("bar", bold()))
         assertSpans("foo", Spanner().append("foo").span("bar", bold()))
         assertSpans(
-                "<StyleSpan>bar</StyleSpan> foo <StyleSpan>bar</StyleSpan>",
-                Spanner().append("bar foo bar").span("bar", bold())
+                expected = "<StyleSpan>bar</StyleSpan> foo <StyleSpan>bar</StyleSpan>",
+                actual = Spanner().append("bar foo bar").span("bar", bold())
+        )
+    }
+
+    @Test
+    fun span_text_ignoreCase() {
+        assertSpans(
+                expected = "foo <StyleSpan>BAR</StyleSpan>",
+                actual = Spanner("foo BAR").span("bar", ignoreCase = true, spans = bold())
+        )
+        assertSpans("foo", Spanner().append("foo").span("bar", bold()))
+        assertSpans(
+                expected = "<StyleSpan>bAR</StyleSpan> foo <StyleSpan>Bar</StyleSpan>",
+                actual = Spanner().append("bAR foo Bar").span("bar", ignoreCase = true, spans = bold())
         )
     }
 

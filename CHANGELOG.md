@@ -1,3 +1,7 @@
+### 1.2.0
+
+- Add `ignoreCase` flag support to `span` function (#18)
+
 ### 1.1.0
 
 - Add `lineBackground` and `lineHeight` for Android Q

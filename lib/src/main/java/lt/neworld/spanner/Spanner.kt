@@ -15,7 +15,7 @@ class Spanner(text: CharSequence?) : SpannableStringBuilder(text) {
         return this
     }
 
-    override fun append(text: CharSequence, start: Int, end: Int): Spanner {
+    override fun append(text: CharSequence?, start: Int, end: Int): Spanner {
         super.append(text, start, end)
 
         return this
@@ -131,19 +131,41 @@ class Spanner(text: CharSequence?) : SpannableStringBuilder(text) {
         return this
     }
 
+    fun span(search: CharSequence, ignoreCase: Boolean = false, vararg spans: Span): Spanner {
+        span(0, search, ignoreCase, *spans)
+
+        return this
+    }
+
     fun span(startIndex: Int, search: CharSequence, vararg spans: Span): Spanner {
+        return span(startIndex, search, false, *spans)
+    }
+
+    fun span(startIndex: Int, search: CharSequence, ignoreCase: Boolean = false, vararg spans: Span): Spanner {
         if (TextUtils.isEmpty(search)) {
             setSpans(0, length, *spans)
             return this
         }
 
+        val actualSearch = if (ignoreCase) {
+            (search.toString() as java.lang.String).toLowerCase()
+        } else {
+            search
+        }
+
+        val actualThis = if (ignoreCase) {
+            (toString() as java.lang.String).toLowerCase()
+        } else {
+            this
+        }
+
         var lastPos: Int = startIndex - 1
 
         while (true) {
-            lastPos = TextUtils.indexOf(this, search, lastPos + 1)
+            lastPos = TextUtils.indexOf(actualThis, actualSearch, lastPos + 1)
             if (lastPos == -1) break
 
-            setSpans(lastPos, lastPos + search.length, *spans)
+            setSpans(lastPos, lastPos + actualSearch.length, *spans)
         }
 
         return this
